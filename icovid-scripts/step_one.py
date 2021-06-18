@@ -1,4 +1,4 @@
-# import sys
+import sys
 # sys.path.append("pkg")
 
 # from github_csv import github
