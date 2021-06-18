@@ -4,11 +4,11 @@ EXECUTIONDATE=`date +%Y%m%d%H%M`;   # YYYYMMDDHHmm
 EXECUTIONDATEBACKUP=`date +%d%m%Y`; # para los backups
 UNIXTIME=`date +%s`;                # genera unix time para diferencias las carpetas de backup cuando hay más de una generada por día
 PATHDOCVALE="/mnt/c/Users/valea/Documents";
+PATHSCRIPTS="/home/vale/datagov/icovid/scripts/scripts-icovid";
 
 echo "[`(date +"%F %T")`] Git pull al repo de ICOVID"
 
 cd /home/vale/datagov/icovid/ICOVID;
-# cd /home/pas/datagovuc/icovid/ICOVID;
 git pull;
 
 echo "[`(date +"%F %T")`] Creación carpeta /archivos-step-one/${EXECUTIONDATE}/"
@@ -18,9 +18,9 @@ echo "[`(date +"%F %T")`] Creación carpeta /archivos-step-two/${EXECUTIONDATE}/
 # mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
 # mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
 
-cd /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/;
-mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
-mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
+cd ${PATHSCRIPTS}/icovid-scripts/;
+mkdir ${PATHSCRIPTS}/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
+mkdir ${PATHSCRIPTS}/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
 
 echo "[`(date +"%F %T")`] Ejecutamos el py script que generas los archivos para el sitio ICOVID"
 
@@ -30,14 +30,15 @@ echo "[`(date +"%F %T")`] Copiamos los archivos generados para el sitio ICOVID e
 
 # /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/
 if [ ! -d "${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP}" ]; then
-  mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
-  cp /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/${EXECUTIONDATE}/*.xlsx /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
-  cp /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE}/*.xlsx /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
+  mkdir ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
+  # mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
+  cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-one/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
+  cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-two/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
 else
-  mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP}_${UNIXTIME};
-  mv /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP}/* /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP}_${UNIXTIME};
-  cp /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/${EXECUTIONDATE}/*.xlsx /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
-  cp /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE}/*.xlsx /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
+  mkdir ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP}_${UNIXTIME};
+  mv ${PATHSCRIPTS}/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP}/* ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP}_${UNIXTIME};
+  cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-one/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
+  cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-two/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
 fi
 
 echo "[`(date +"%F %T")`] Copiamos las carpetas de interés del repo actualizadas en la ruta /backup/repo/"
