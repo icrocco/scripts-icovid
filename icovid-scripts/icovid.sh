@@ -18,9 +18,9 @@ echo "[`(date +"%F %T")`] Creación carpeta /archivos-step-two/${EXECUTIONDATE}/
 # mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
 # mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
 
-cd /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/scripts-icovid/icovid-scripts;
-mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/scripts-icovid/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
-mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
+cd /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/;
+mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
+mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
 
 echo "[`(date +"%F %T")`] Ejecutamos el py script que generas los archivos para el sitio ICOVID"
 
@@ -30,7 +30,7 @@ echo "[`(date +"%F %T")`] Copiamos los archivos generados para el sitio ICOVID e
 
 # /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/
 if [ ! -d "${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP}" ]; then
-  mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
+  mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
   cp /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/${EXECUTIONDATE}/*.xlsx /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
   cp /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE}/*.xlsx /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
 else
