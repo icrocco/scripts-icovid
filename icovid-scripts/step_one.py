@@ -482,7 +482,8 @@ result_nacional_T1_final = result_nacional_T1_dropped_cols.dropna()
 
 today = sys.argv[1]
 hoy = time.strftime("%Y%m%d%H%M%S") #guardamos la fecha de generación del archivo en formato YYYYMMDDhhmmss
-ruta_base = f"/home/pas/python/icovid-scripts/archivos-step-one/{today}/"
+# /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/
+ruta_base = f"/home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/{today}/"
 
 #### REGIONAL
 # ruta_regional_T1 = f"/home/pas/python/icovid-scripts/archivos-step-one/regional_T1_{hoy}.csv"
