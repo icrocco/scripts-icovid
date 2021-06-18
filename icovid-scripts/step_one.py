@@ -10,7 +10,8 @@ import requests
 import os
 
 def github(url: str):
-    token = os.environ.get("GITHUB_DATAGOV_TOKEN")
+    # token = os.environ.get("GITHUB_DATAGOV_TOKEN")
+    token = "dd824c9c313fe17ad1fb4566a46543a3d54e63d6"
     try:
         headers = {
             "Authorization": f"token {token}",
