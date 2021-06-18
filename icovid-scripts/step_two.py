@@ -1,7 +1,7 @@
 import sys
-sys.path.append("pkg")
+# sys.path.append("pkg")
 
-from github_csv import github
+# from github_csv import github
 from step_one import nacional_csv, nacional_T1_csv, regional_csv, regional_T1_csv
 import pandas as pd
 import time
@@ -9,6 +9,17 @@ import io
 
 import requests
 import os
+
+def github(url: str):
+    token = os.environ.get("GITHUB_DATAGOV_TOKEN")
+    try:
+        headers = {
+            "Authorization": f"token {token}",
+            "Accept": "application/vnd.github.v3.raw"}
+        return requests.get(url, headers=headers)
+
+    except requests.exceptions.RequestException as e:
+        raise SystemExit(e)
 
 ########################################
 #####      VARIABLES GLOBALES      #####
