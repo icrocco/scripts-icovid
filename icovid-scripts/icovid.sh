@@ -19,8 +19,8 @@ echo "[`(date +"%F %T")`] Creación carpeta /archivos-step-two/${EXECUTIONDATE}/
 # mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
 
 cd ${PATHSCRIPTS}/icovid-scripts/;
-mkdir ${PATHSCRIPTS}/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
-mkdir ${PATHSCRIPTS}/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
+mkdir -p ${PATHSCRIPTS}/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
+mkdir -p ${PATHSCRIPTS}/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
 
 echo "[`(date +"%F %T")`] Ejecutamos el py script que generas los archivos para el sitio ICOVID"
 
@@ -30,12 +30,12 @@ echo "[`(date +"%F %T")`] Copiamos los archivos generados para el sitio ICOVID e
 
 # /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/
 if [ ! -d "${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP}" ]; then
-  mkdir ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
+  mkdir -p ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
   # mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
   cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-one/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
   cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-two/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
 else
-  mkdir ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP}_${UNIXTIME};
+  mkdir -p ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP}_${UNIXTIME};
   mv ${PATHSCRIPTS}/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP}/* ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP}_${UNIXTIME};
   cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-one/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
   cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-two/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
@@ -45,13 +45,13 @@ echo "[`(date +"%F %T")`] Copiamos las carpetas de interés del repo actualizada
 
 # /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/repo/
 if [ ! -d "${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP}" ]; then
-  mkdir ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
+  mkdir -p ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
   cp -r /home/vale/datagov/icovid/ICOVID/dimension1 ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
   cp -r /home/vale/datagov/icovid/ICOVID/dimension2 ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
   cp -r /home/vale/datagov/icovid/ICOVID/dimension3 ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
   cp -r /home/vale/datagov/icovid/ICOVID/dimension4 ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
 else
-  mkdir ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP}_${UNIXTIME};
+  mkdir -p ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP}_${UNIXTIME};
   mv ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP}/* ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP}_${UNIXTIME};
   cp -r /home/vale/datagov/icovid/ICOVID/dimension1 ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
   cp -r /home/vale/datagov/icovid/ICOVID/dimension2 ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
