@@ -1,4 +1,5 @@
-import pandas as pd 
+import pandas as pd
+import os
 from datetime import date, timedelta
 
 # Avance de vacunación: primera dosis más dosis única
@@ -51,7 +52,8 @@ reg_id = reg_id.astype({"Region": int})
 
 
 ## POBLACIÓN POR REGIÓN Y EDAD ##
-ine = pd.read_csv("/home/pas/python/icovid-vacunacion/regional/ine_pob_region.csv")
+dir_path = os.path.abspath(os.path.dirname(__file__))
+ine = pd.read_csv(f"{dir_path}/ine/ine_pob_region.csv")
 # ine = ine.loc[ine.Edad > 17]
 ine = ine.astype({"Region":int})
 
@@ -66,8 +68,6 @@ reg_final["cobertura_vacunacion"] = reg_final["segunda_dosis"] + reg_final["unic
 reg_final["avance_porcentual"] = round(100 * reg_final["avance_vacunacion"] / reg_final["pob_2021"],2)
 reg_final["cobertura_porcentual"] = round(100 * reg_final["cobertura_vacunacion"] / reg_final["pob_2021"], 2)
 
-# reg_final.to_csv("./avance_cobertura_vacunas.csv", index=False)
-
 reg_sum = reg_final[["region_nombre", "Fecha", "avance_porcentual", "cobertura_porcentual"]]
 
 ## RANGOS DE PORCENTAJES DE COBERTURA ##
@@ -77,8 +77,9 @@ copy_reg_sum.loc[(copy_reg_sum.cobertura_porcentual < 70) & (copy_reg_sum.cobert
 copy_reg_sum.loc[(copy_reg_sum.cobertura_porcentual < 90) & (copy_reg_sum.cobertura_porcentual > 69), "rango_cobertura"] = "70-89" # amarillo
 copy_reg_sum.loc[copy_reg_sum.cobertura_porcentual > 89, "rango_cobertura"] = ">=90" # verde
 
-copy_reg_sum.to_csv("./vacunacion_regiones.csv", index=False)
-
+dir_path = os.path.abspath(os.path.dirname(__file__))
+os.mkdir(f"{dir_path}/archivos_nuevos_vacunas")
+copy_reg_sum.to_csv(f"{dir_path}/archivos_nuevos_vacunas/vacunacion_regiones.csv", index=False)
 
 
 ## PARA EL GRÁFICO DE COBERTURA NACIONAL ##
@@ -107,7 +108,7 @@ copy_nacional.loc[(copy_nacional.cobertura < 70) & (copy_nacional.cobertura > 49
 copy_nacional.loc[(copy_nacional.cobertura < 90) & (copy_nacional.cobertura > 69), "rango_cobertura"] = "70-89" # amarillo
 copy_nacional.loc[copy_nacional.cobertura > 89, "rango_cobertura"] = ">=90" # verde
 
-copy_nacional.to_csv("./total_nacional_vacunas.csv", index=False)
+copy_nacional.to_csv(f"{dir_path}/archivos_nuevos_vacunas/total_nacional_vacunas.csv", index=False)
 
 # PARA EL GRÁFICO COMPLETO A NIVEL NACIONAL ##
 url_primera = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_1eraDosis_std.csv"
@@ -130,4 +131,4 @@ vac_unica = vac_unica.rename(columns={"Unica Dosis": "cantidad"})
 vac_unica["dosis"] = "unica"
 
 total = pd.concat([vac_primera, vac_segunda, vac_unica])
-total.to_csv("./consolidado_vacunas.csv", index=False)
+total.to_csv(f"{dir_path}/archivos_nuevos_vacunas/consolidado_vacunas.csv", index=False)

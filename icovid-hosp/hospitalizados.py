@@ -29,11 +29,6 @@ def main(url: str):
     # hacemos un mapeo a los nuevos rangos etáreos según url
     age_map = {"<=39":"<50", "40-49":"<50", "50-59":"50-69", "60-69":"50-69", ">=70":">=70"}
 
-    # if url == hosp_uci_etario:
-    #     age_map = {"<=39":"<50", "40-49":"<50", "50-59":"50-69", "60-69":"50-69", ">=70":">=70"}
-    # elif url == fallecidos_etario:
-    #     age_map = {"<=39":"<50", "40-49":"<50", "50-59":"50-69", "60-69":"50-69", "70-79":">=70", "80-89":">=70", ">=90":">=70"}
-
     intermediate_df.grupo_etario = intermediate_df.grupo_etario.map(age_map)
 
     # Al restar 1, la ultima final_df 2020 queda en la misma final_df que la primera del 2021
@@ -59,53 +54,21 @@ def main(url: str):
     final_df = final_df.astype({"casos_diarios_promedio": int}) # para reportar el promedio diario como int
     final_df_reducido = final_df[["grupo_etario", "semana", "semana_texto", "inicio_semana", "casos_totales", "casos_diarios_promedio", "cambio_porcentual_diarios"]]
 
-    # if url == hosp_uci_etario:
-    #     final_df["casos_diarios_promedio"] = final_df.casos_totales / final_df.largo_semana
-    #     final_df["casos_diarios_promedio_ant"] = final_df.casos_diarios_promedio.shift()
-    #     final_df["diferencia_promedios"] = final_df.casos_diarios_promedio - final_df.casos_diarios_promedio_ant
-    #     final_df["cambio_porcentual_diarios"] = round((final_df.diferencia_promedios / final_df.casos_diarios_promedio_ant) * 100, 2)
-    #     final_df = final_df.astype({"casos_diarios_promedio": int}) # para reportar el promedio diario como int
-    #     final_df_reducido = final_df[["grupo_etario", "semana", "semana_texto", "inicio_semana", "casos_totales", "casos_diarios_promedio", "cambio_porcentual_diarios"]]
-    # elif url == fallecidos_etario:
-    #     final_df["casos_totales_ant"] = final_df.casos_totales.shift()
-    #     final_df["casos_semana_promedio"] = final_df.casos_totales - final_df.casos_totales_ant
-    #     final_df["casos_diarios_promedio"] = final_df.casos_semana_promedio / final_df.largo_semana
-    #     final_df["casos_diarios_promedio_ant"] = final_df.casos_diarios_promedio.shift()
-    #     final_df["diferencia_promedios"] = final_df.casos_diarios_promedio - final_df.casos_diarios_promedio_ant
-    #     final_df["cambio_porcentual_diarios"] = round((final_df.diferencia_promedios / final_df.casos_diarios_promedio_ant) * 100, 2)
-    #     final_df.casos_diarios_promedio = final_df.casos_diarios_promedio.fillna(0)
-    #     final_df = final_df.astype({"casos_diarios_promedio": int}) # para reportar el promedio diario como int
-    #     final_df_reducido = final_df[["grupo_etario", "semana", "semana_texto", "inicio_semana", "casos_semana_promedio", "casos_diarios_promedio", "cambio_porcentual_diarios"]]
-
     return final_df_reducido, final_df
-
 
 if __name__ == "__main__":
     # nota: se presenta la semana de domingo a sábado
     today = datetime.now().strftime("%Y%m%d")
-
+    dir_path = os.path.abspath(os.path.dirname(__file__))
     # hospitalizados etario
-    if os.path.exists(f"./hospitalizados_etario/{today}"):
-        shutil.rmtree(f"./hospitalizados_etario/{today}")
+    if os.path.exists(f"{dir_path}/archivos_hospitalizados/{today}"):
+        shutil.rmtree(f"{dir_path}/archivos_hospitalizados/{today}")
     
-    os.mkdir(f"./hospitalizados_etario/{today}")
+    os.makedirs(f"{dir_path}/archivos_hospitalizados/{today}")
 
-    ruta_hospitalizados_sabana = f"./hospitalizados_etario/{today}/hospitalizados_etario_sabana.csv"
-    ruta_hospitalizados = f"./hospitalizados_etario/{today}/hospitalizados_etario.csv"
+    ruta_hospitalizados_sabana = f"{dir_path}/archivos_hospitalizados/{today}/hospitalizados_etario_sabana.csv"
+    ruta_hospitalizados = f"{dir_path}/archivos_hospitalizados/{today}/hospitalizados_etario.csv"
 
     df_reducido_hosp, df_sabana_hosp = main(hosp_uci_etario)
     df_sabana_hosp.to_csv(ruta_hospitalizados_sabana, index=False)
     df_reducido_hosp.to_csv(ruta_hospitalizados, index=False)
-
-    # fallecidos etario
-    # if os.path.exists(f"./fallecidos_etario/{today}"):
-    #     shutil.rmtree(f"./fallecidos_etario/{today}")
-    
-    # os.mkdir(f"./fallecidos_etario/{today}")
-
-    # ruta_fallecidos_sabana = f"./fallecidos_etario/{today}/fallecidos_etario_sabana.csv"
-    # ruta_fallecidos = f"./fallecidos_etario/{today}/fallecidos_etario.csv"
-
-    # df_reducido_fallecidos, df_sabana_fallecidos = main(fallecidos_etario)
-    # df_sabana_fallecidos.to_csv(ruta_fallecidos_sabana, index=False)
-    # df_reducido_fallecidos.to_csv(ruta_fallecidos, index=False)

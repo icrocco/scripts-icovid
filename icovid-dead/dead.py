@@ -70,7 +70,7 @@ def main():
 if __name__ == "__main__":
     # nota: se presenta la semana de domingo a sábado
     today = datetime.now().strftime("%Y%m%d")
-    path_results = f"/home/pas/python/icovid-dead/fallecidos-etario/{today}"
+    path_results = f"{os.getcwd()}/fallecidos-etario/{today}"
 
     # fallecidos etario
     if os.path.exists(path_results):

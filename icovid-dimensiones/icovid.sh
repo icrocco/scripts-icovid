@@ -4,7 +4,7 @@ EXECUTIONDATE=`date +%Y%m%d%H%M`;   # YYYYMMDDHHmm
 EXECUTIONDATEBACKUP=`date +%d%m%Y`; # para los backups
 UNIXTIME=`date +%s`;                # genera unix time para diferencias las carpetas de backup cuando hay más de una generada por día
 PATHDOCVALE="/mnt/c/Users/valea/Documents";
-PATHSCRIPTS="/home/vale/datagov/icovid/scripts/scripts-icovid";
+PATHSCRIPTS=$(pwd);
 
 echo "[`(date +"%F %T")`] Git pull al repo de ICOVID"
 
@@ -14,24 +14,18 @@ git pull;
 echo "[`(date +"%F %T")`] Creación carpeta /archivos-step-one/${EXECUTIONDATE}/"
 echo "[`(date +"%F %T")`] Creación carpeta /archivos-step-two/${EXECUTIONDATE}/"
 
-# # cd /home/pas/python/icovid-scripts;
-# mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
-# mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
-
 cd ${PATHSCRIPTS}/icovid-scripts/;
 mkdir -p ${PATHSCRIPTS}/icovid-scripts/archivos-step-one/${EXECUTIONDATE};
 mkdir -p ${PATHSCRIPTS}/icovid-scripts/archivos-step-two/${EXECUTIONDATE};
 
 echo "[`(date +"%F %T")`] Ejecutamos el py script que generas los archivos para el sitio ICOVID"
 
-python3 step_two.py ${EXECUTIONDATE}
+python3 step_two.py
 
 echo "[`(date +"%F %T")`] Copiamos los archivos generados para el sitio ICOVID en la ruta /backup/generated/"
 
-# /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/
 if [ ! -d "${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP}" ]; then
   mkdir -p ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
-  # mkdir /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/generated/${EXECUTIONDATEBACKUP};
   cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-one/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
   cp ${PATHSCRIPTS}/icovid-scripts/archivos-step-two/${EXECUTIONDATE}/*.xlsx ${PATHDOCVALE}/ICOVID/resumen/${EXECUTIONDATEBACKUP};
 else
@@ -43,7 +37,6 @@ fi
 
 echo "[`(date +"%F %T")`] Copiamos las carpetas de interés del repo actualizadas en la ruta /backup/repo/"
 
-# /home/vale/datagov/icovid/scripts/scripts-icovid/icovid-scripts/backup/repo/
 if [ ! -d "${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP}" ]; then
   mkdir -p ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
   cp -r /home/vale/datagov/icovid/ICOVID/dimension1 ${PATHDOCVALE}/ICOVID/icovid-repo/${EXECUTIONDATEBACKUP};
