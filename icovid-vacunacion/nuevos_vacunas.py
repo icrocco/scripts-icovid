@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import shutil
 from datetime import date, timedelta
 
 # Avance de vacunación: primera dosis más dosis única
@@ -77,7 +78,9 @@ copy_reg_sum.loc[(copy_reg_sum.cobertura_porcentual < 70) & (copy_reg_sum.cobert
 copy_reg_sum.loc[(copy_reg_sum.cobertura_porcentual < 90) & (copy_reg_sum.cobertura_porcentual > 69), "rango_cobertura"] = "70-89" # amarillo
 copy_reg_sum.loc[copy_reg_sum.cobertura_porcentual > 89, "rango_cobertura"] = ">=90" # verde
 
-dir_path = os.path.abspath(os.path.dirname(__file__))
+if os.path.exists(f"{dir_path}/archivos_nuevos_vacunas"):
+    shutil.rmtree(f"{dir_path}/archivos_nuevos_vacunas")
+    
 os.mkdir(f"{dir_path}/archivos_nuevos_vacunas")
 copy_reg_sum.to_csv(f"{dir_path}/archivos_nuevos_vacunas/vacunacion_regiones.csv", index=False)
 

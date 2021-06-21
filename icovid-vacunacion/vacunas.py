@@ -1,5 +1,9 @@
 import pandas as pd
 import os
+import shutil
+import warnings
+
+warnings.filterwarnings("ignore")
 
 vacunas_primera_dosis = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_1eraDosis_std.csv"
 vacunas_segunda_dosis = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_2daDosis_std.csv"
@@ -64,6 +68,10 @@ primera_dosis_tier_two["cobertura_procentual"] = round(primera_dosis_tier_two["c
 primera_dosis_tier_three["cobertura_procentual"] = round(primera_dosis_tier_three["cantidad"] / total_tier_three * 100, 2)
 
 primera_final = pd.concat([primera_dosis_tier_one, primera_dosis_tier_two, primera_dosis_tier_three])
+
+
+if os.path.exists(f"{dir_path}/archivos_vacunas"):
+    shutil.rmtree(f"{dir_path}/archivos_vacunas")
 
 os.mkdir(f"{dir_path}/archivos_vacunas")
 primera_final.to_csv(f"{dir_path}/archivos_vacunas/primera_dosis.csv", index=False)
