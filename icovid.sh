@@ -4,6 +4,7 @@ EXECUTIONDATE=$(date +%Y%m%d); # para los backups
 UNIXTIME=$(date +%s);                # genera unix time para diferencias las carpetas de backup cuando hay más de una generada por día
 PATHDOC="/mnt/c/Users/${1}/Documents"; # ponemos el nombre usuario en Windows
 ROOTPATH="${HOME}/datagov/scripts-icovid";
+ROOTPATH2="${HOME}/datagov";
 
 echo "[$(date +"%F %T")] Git pull al repo de ICOVID"
 
@@ -34,17 +35,17 @@ echo "[$(date +"%F %T")] Copiamos las carpetas del repo actualizadas en la ruta 
 
 if [ ! -d "${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE}" ]; then
   sudo mkdir -p ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
-  sudo cp -r ${ROOTPATH}/ICOVID/dimension1 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
-  sudo cp -r ${ROOTPATH}/ICOVID/dimension2 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
-  sudo cp -r ${ROOTPATH}/ICOVID/dimension3 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
-  sudo cp -r ${ROOTPATH}/ICOVID/dimension4 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
+  sudo cp -r ${ROOTPATH2}/ICOVID/dimension1 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
+  sudo cp -r ${ROOTPATH2}/ICOVID/dimension2 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
+  sudo cp -r ${ROOTPATH2}/ICOVID/dimension3 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
+  sudo cp -r ${ROOTPATH2}/ICOVID/dimension4 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
 else
   sudo mkdir -p ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE}_${UNIXTIME};
   sudo mv ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE}/* ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE}_${UNIXTIME};
-  sudo cp -r ${ROOTPATH}/ICOVID/dimension1 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
-  sudo cp -r ${ROOTPATH}/ICOVID/dimension2 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
-  sudo cp -r ${ROOTPATH}/ICOVID/dimension3 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
-  sudo cp -r ${ROOTPATH}/ICOVID/dimension4 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
+  sudo cp -r ${ROOTPATH2}/ICOVID/dimension1 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
+  sudo cp -r ${ROOTPATH2}/ICOVID/dimension2 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
+  sudo cp -r ${ROOTPATH2}/ICOVID/dimension3 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
+  sudo cp -r ${ROOTPATH2}/ICOVID/dimension4 ${PATHDOC}/ICOVID/icovid-repo/${EXECUTIONDATE};
 fi
 
 echo "[$(date +"%F %T")] Generamos los archivos para fallecidos"
