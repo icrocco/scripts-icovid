@@ -7,7 +7,8 @@ import shutil
 from datetime import datetime
 
 def main():
-    path_fallecidos = "/home/pas/python/icovid-dead/work-files/fallecidos_rango.csv"
+    dir_path = os.path.abspath(os.path.dirname(__file__))
+    path_fallecidos = f"{dir_path}/icovid-dead/work-files/fallecidos_rango.csv"
     df = pd.read_csv(path_fallecidos)
 
     # df["date"] = pd.to_datetime(df.fecha, format="%d-%m-%Y")
