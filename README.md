@@ -24,7 +24,7 @@ Y el repositorio con los scripts:
 git clone https://github.com/datagovuc/scripts-icovid.git
 ```
 
-Esto debería generar los siguientes directorios dentro del directorio `datagov`:
+Esto debería generar los siguientes directorios enl directorio `datagov`:
 
 ```bash
 datagov
@@ -46,7 +46,7 @@ Y luego ejecutar lo siguiente:
 ./icovid.sh <usuario_windows>
 ```
 
-Donde `<usuario_windows>` es el nombre de usuario que tienen en Windows, por ejemplo, `valea`. Esto es necesario pues así vamos a hacer una copia de solo los archivos necesario dentro de la carpeta `Documentos` de Windows. Siguiendo con el ejemplo, el comando a ejcutar sería:
+Donde `<usuario_windows>` es el nombre de usuario que tienen en Windows, por ejemplo, `valea`. Esto es necesario pues así vamos a hacer una copia de solo los archivos necesario en la carpeta `Documentos` de Windows. Siguiendo con el ejemplo, el comando a ejcutar sería:
 
 ```bash
 ./icovid.sh valea
@@ -64,7 +64,7 @@ Y para nombre con espacio, lo siguiente:
 ./icovid.sh "Vale A"
 ```
 
-Ejecutar este comando va a generar tres carpetas dentro de `Documentos`:
+Ejecutar este comando va a generar tres carpetas en `Documentos`:
 + `resumen`
 + `icovid-repo`
 + `nuevas-visualizaciones`
@@ -81,11 +81,11 @@ Es importante notar que los archivos de la última ejecución siempre van a qued
 
 ## Rutas de carga a Drive de los archivos generados
 
-Los archivos generados dentro de `resumen` se deben subir en [**este drive**](https://drive.google.com/drive/u/0/folders/1OUYrFVFs4dcbqkgaBCqP8HKRHUe7XE94), excepto los archivos `nacional_T1.xlsx` y `regional_T1.xlsx`, que deben subir a [**este drive**](https://drive.google.com/drive/u/0/folders/1atrwkcYo3JUWm7zwxjwr5DkPZptYTCH2).
+Los archivos generados en `resumen` se deben subir a [**este drive**](https://drive.google.com/drive/u/0/folders/1OUYrFVFs4dcbqkgaBCqP8HKRHUe7XE94), excepto los archivos `nacional_T1.xlsx` y `regional_T1.xlsx`, que se suben a [**este drive**](https://drive.google.com/drive/u/0/folders/1atrwkcYo3JUWm7zwxjwr5DkPZptYTCH2).
 
-Los archivos generados dentro de `nuevas-visualizaciones` se deben subir en [**este drive**](https://drive.google.com/drive/u/0/folders/1azKFQpv5_lC99Tw1N_0U5K89IKNBivQm), excepto `total_nacional_vacunas.csv`, `vacunacion_regiones.csv` y `consolidado_vacunas.csv`, que se deben subir [**este drive**](https://drive.google.com/drive/u/0/folders/1zGH75dM4yQJ2qJ7tBIRmz9ttE4fWLAF2)
+Los archivos generados en `nuevas-visualizaciones` se deben subir a [**este drive**](https://drive.google.com/drive/u/0/folders/1azKFQpv5_lC99Tw1N_0U5K89IKNBivQm), excepto `total_nacional_vacunas.csv`, `vacunacion_regiones.csv` y `consolidado_vacunas.csv`, que se suben a [**este drive**](https://drive.google.com/drive/u/0/folders/1zGH75dM4yQJ2qJ7tBIRmz9ttE4fWLAF2)
 
-Las carpetas generadas dentro de `icovid-repo` se deben subir en [**este drive**](https://drive.google.com/drive/u/0/folders/0AIZz-0H8A-VcUk9PVA)
+Las carpetas generadas en `icovid-repo` se deben subir a [**este drive**](https://drive.google.com/drive/u/0/folders/0AIZz-0H8A-VcUk9PVA)
 
 ## Visualizaciones y envío de mail a redactores del informe semanal
 
