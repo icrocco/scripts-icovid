@@ -89,4 +89,4 @@ Es importante notar que los archivos de la última ejecución siempre van a qued
 
 ## Visualizaciones y envío de mail a redactores del informe semanal
 
-Una vez cargados todos los archivos en Drive, estos se deben actualizar en Tableu. Si todo sale bien, el siguiente paso es enviar un mail a las personas encargadas de redactar el informe de la semana. La información con las personas redactoras por semana y sus emails se encuentra en el siguiente documento :arrow_right: [link](https://docs.google.com/document/d/1r2JJ586hB3jLfTw-bKvfXGqPGxnsywJJXpMs2r43LVk/edit)
+Una vez cargados todos los archivos en Drive, estos se deben actualizar en Tableu. Si todo sale bien, el siguiente paso es enviar un mail a las personas encargadas de redactar el informe de la semana. La información con las personas redactoras por semana y sus emails se encuentra en [**este documento**](https://docs.google.com/document/d/1r2JJ586hB3jLfTw-bKvfXGqPGxnsywJJXpMs2r43LVk/edit)
