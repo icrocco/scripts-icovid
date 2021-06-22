@@ -3,18 +3,14 @@
 EXECUTIONDATE=$(date +%Y%m%d); # para los backups
 UNIXTIME=$(date +%s);                # genera unix time para diferencias las carpetas de backup cuando hay más de una generada por día
 PATHDOC="/mnt/c/Users/${1}/Documents"; # ponemos el nombre usuario en Windows
-# PATHDOC=$1
 ROOTPATH="${HOME}/datagov/scripts-icovid";
-# ROOTPATH2="${HOME}/datagovuc/icovid";
 
 echo "[$(date +"%F %T")] Git pull al repo de ICOVID"
 
-# cd ${ROOTPATH}/ICOVID;
-cd ${HOME}/datagovuc/icovid/ICOVID;
+cd ${HOME}/datagov/ICOVID;
 git pull;
 
-# cd ${HOME}/datagov/icovid/icovid-scripts;
-cd ${HOME}/python/scripts-icovid;
+cd ${ROOTPATH};
 
 echo "[$(date +"%F %T")] Generamos los archivos para las dimensiones de la 1 a la 4"
 
