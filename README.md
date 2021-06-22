@@ -81,11 +81,11 @@ Es importante notar que los archivos de la última ejecución siempre van a qued
 
 ## Rutas de carga a Drive de los archivos generados
 
-+ Los archivos que se generan dentro de `resumen` se deben subir en [**este drive**](https://drive.google.com/drive/u/0/folders/1OUYrFVFs4dcbqkgaBCqP8HKRHUe7XE94), excepto los archivos `nacional_T1.xlsx` y `regional_T1.xlsx`, que deben subir a [**este drive**](https://drive.google.com/drive/u/0/folders/1atrwkcYo3JUWm7zwxjwr5DkPZptYTCH2).
+Los archivos que se generan dentro de `resumen` se deben subir en [**este drive**](https://drive.google.com/drive/u/0/folders/1OUYrFVFs4dcbqkgaBCqP8HKRHUe7XE94), excepto los archivos `nacional_T1.xlsx` y `regional_T1.xlsx`, que deben subir a [**este drive**](https://drive.google.com/drive/u/0/folders/1atrwkcYo3JUWm7zwxjwr5DkPZptYTCH2).
 
-+ Los archivos que se generan dentro de `nuevas-visualizaciones` se deben subir en [**este drive**](https://drive.google.com/drive/u/0/folders/1azKFQpv5_lC99Tw1N_0U5K89IKNBivQm), excepto `total_nacional_vacunas.csv`, `vacunacion_regiones.csv` y `consolidado_vacunas.csv`, que se deben subir [**este drive**](https://drive.google.com/drive/u/0/folders/1zGH75dM4yQJ2qJ7tBIRmz9ttE4fWLAF2)
+Los archivos que se generan dentro de `nuevas-visualizaciones` se deben subir en [**este drive**](https://drive.google.com/drive/u/0/folders/1azKFQpv5_lC99Tw1N_0U5K89IKNBivQm), excepto `total_nacional_vacunas.csv`, `vacunacion_regiones.csv` y `consolidado_vacunas.csv`, que se deben subir [**este drive**](https://drive.google.com/drive/u/0/folders/1zGH75dM4yQJ2qJ7tBIRmz9ttE4fWLAF2)
 
-+ Las carpetas que se generan dentro de `icovid-repo` se deben subir en [**este drive**](https://drive.google.com/drive/u/0/folders/0AIZz-0H8A-VcUk9PVA)
+Las carpetas que se generan dentro de `icovid-repo` se deben subir en [**este drive**](https://drive.google.com/drive/u/0/folders/0AIZz-0H8A-VcUk9PVA)
 
 ## Visualizaciones y envío de mail a redactores del informe semanal
 
