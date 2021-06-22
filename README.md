@@ -34,6 +34,8 @@ datagov
 
 ## Generación archivos para subir a Drive ICOVID
 
+### Ejecución proceso global 
+
 Para generar los archivos que se cargan en Google Drive debemos, primero, cambiarnos al directorio `scripts-icovid`:
 
 ```bash
@@ -79,6 +81,83 @@ resumen
 
 Es importante notar que los archivos de la última ejecución siempre van a quedar en la carpeta con formato **yyyymmdd**.
 
+### Ejecución proceso por separado
+
+La generación de los archivos también se puede hacer de manera parcelado y por separado, lo cual nos permite mayor flexibilidad si, por ejemplo, se quisiera actualizar solamente una tanda de archivos y no todos a la vez.
+
+El proceso se puede divir de acuerdo a los siguientes subprocesos:
+
+#### Generación archivos Dimensiones 1 a 4
+
+Este subproceso corresponde al primer proceso de generación de archivos relacionados con las 4 dimensiones definidas por el grupo de ICOVID. Para ejecutarlo corremos lo siguiente dentro del directorio `scripts-icovid`:
+
+```bash
+python3 icovid-dimensiones/step_one.py && python3 icovid-dimensiones/step_two.py
+```
+
+Los archivos generados se guardan en las siguientes rutas dentro de `scripts-icovid`:
+
+```bash
+icovid-dimensiones
+├── archivos-step-one
+│   └── 20210621
+└── archivos-step-two
+    └── 20210621
+```
+
+De aquí se deben considerar solo los archivos en formato `.xlsx` de ambos directorios.
+
+#### Generación archivos hospitalizados
+
+Para la ejecuión de este subproceso, corremos lo siguiente dentro de `scripts-icovid`:
+
+```bash
+python3 icovid-hosp/hospitalizados.py
+```
+
+Los archivos generados se guardan en las siguientes rutas dentro de `scripts-icovid`:
+```bash
+icovid-hosp/
+└── archivos_hospitalizados
+    └── 20210621
+```
+
+De aquí se debe considerar solo el archivos `hospitalizados_etario.csv`
+
+#### Generación archivos fallecidos
+
+Para la ejecuión de este subproceso, corremos lo siguiente dentro de `scripts-icovid`:
+
+```bash
+bash icovid-dead/dead.sh 
+```
+
+Los archivos generados se guardan en las siguientes rutas dentro de `scripts-icovid`:
+```bash
+icovid-dead/
+└── fallecidos-etario
+    └── 20210621
+```
+
+De aquí se debe considerar solo el archivos `fallecidos-etario.csv`
+
+#### Generación archivos vacnuados
+
+Para la ejecuión de este subproceso, corremos lo siguiente dentro de `scripts-icovid`:
+
+```bash
+python3 icovid-vacunacion/vacunas.py && python3 icovid-vacunacion/nuevos_vacunas.py
+```
+
+Los archivos generados se guardan en las siguientes rutas dentro de `scripts-icovid`:
+```bash
+icovid-vacunacion/
+├── archivos_nuevos_vacunas
+└── archivos_vacunas
+```
+
+Consideramos todos los archivos de ambos directorios.
+
 ## Rutas de carga a Drive de los archivos generados
 
 Los archivos generados en `resumen` se deben subir a [**este drive**](https://drive.google.com/drive/u/0/folders/1OUYrFVFs4dcbqkgaBCqP8HKRHUe7XE94), excepto los archivos `nacional_T1.xlsx` y `regional_T1.xlsx`, que se suben a [**este drive**](https://drive.google.com/drive/u/0/folders/1atrwkcYo3JUWm7zwxjwr5DkPZptYTCH2).
@@ -89,4 +168,4 @@ Las carpetas generadas en `icovid-repo` se deben subir a [**este drive**](https:
 
 ## Visualizaciones y envío de mail a redactores del informe semanal
 
-Una vez cargados todos los archivos en Drive, estos se deben actualizar en Tableu. Si todo sale bien, el siguiente paso es enviar un mail a las personas encargadas de redactar el informe de la semana. La información con las personas redactoras por semana y sus emails se encuentra en [**este documento**](https://docs.google.com/document/d/1r2JJ586hB3jLfTw-bKvfXGqPGxnsywJJXpMs2r43LVk/edit)
+Una vez cargados todos los archivos en Drive, estos se deben actualizar en Tableu. Si todo sale bien, el siguiente paso es enviar un mail a las personas encargadas de redactar el informe de la semana. Primero se actualiza solo el sitio previo para informes y el miércoles ambos sitios, el previo par ainformes y el sitio público. Se les debe informar cuando esto ocurra, y la primera actualización debe estar antes del martes a las 17:00 horas, pues el grupo se reune a los martes a las 17:30. La información con las personas redactoras por semana y sus emails se encuentra en [**este documento**](https://docs.google.com/document/d/1r2JJ586hB3jLfTw-bKvfXGqPGxnsywJJXpMs2r43LVk/edit)
