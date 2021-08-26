@@ -9,7 +9,7 @@ import shutil
 
 #### URLS ####
 carga_nacional_ajustada = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension1/carga/nacional/carga.nacional.ajustada.csv"
-r_nacional = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto54/r.nacional_n.csv"
+r_nacional = "https://raw.githubusercontent.com/datagovuc/scripts-icovid/prueba_repo_minciencias/archivo_prueba_nuevo.csv"
 tasa_test_semanal_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension2/tasatest/nacional/tasa%20test%20semanal%20nacional.csv"
 positividad_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension2/positividad/nacional/Positividad%20nacional.csv"
 prob48_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension3/proptemprano/Nacional/prob48.nacional.csv"
