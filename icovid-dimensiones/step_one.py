@@ -9,11 +9,11 @@ import shutil
 
 #### URLS ####
 carga_nacional_ajustada = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension1/carga/nacional/carga.nacional.ajustada.csv"
-r_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension1/R/nacional/r.nacional_n.csv"
+r_nacional = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto54/r.nacional_n.csv"
 tasa_test_semanal_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension2/tasatest/nacional/tasa%20test%20semanal%20nacional.csv"
 positividad_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension2/positividad/nacional/Positividad%20nacional.csv"
 prob48_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension3/proptemprano/Nacional/prob48.nacional.csv"
-lab24_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension3/laboratorio/Nacional/lab24.nacional.csv"
+lab24_nacional = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto72/lab24.nacional.csv"
 not48_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension3/notificacion/Nacional/not48.nacional.csv"
 total72_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension3/total/Nacional/total72.nacional.csv"
 uso_camas_uci_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension4/uci/nacional/Uso%20de%20camas%20UCI%20Nacional.csv"
