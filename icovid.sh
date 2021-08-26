@@ -11,6 +11,9 @@ echo "[$(date +"%F %T")] Git pull al repo de ICOVID"
 cd ${HOME}/datagov/ICOVID;
 git pull;
 
+cd ${HOME}/datagov/ICOVID/dimension1/R/nacional/;
+wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto72/lab24.nacional.csv';
+
 cd ${ROOTPATH};
 
 echo "[$(date +"%F %T")] Generamos los archivos para las dimensiones de la 1 a la 4"
