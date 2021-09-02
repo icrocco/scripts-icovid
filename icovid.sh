@@ -135,6 +135,8 @@ rm 'lab24.provincial.csv';
 wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto72/lab24.provincial.csv';
 
 cd ${HOME}/datagov/ICOVID;
+git add .;
+git commit -m "Pull manual del repo ${EXECUTIONDATE}";
 git push;
 
 cd ${ROOTPATH};
