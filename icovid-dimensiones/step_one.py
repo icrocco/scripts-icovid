@@ -112,16 +112,16 @@ D4_nacional = D4_nacional[["fecha","Totales"]]
 ####            CARGA INDICADORES REGIONALES                ####
 ################################################################
 
-A1_regional = A1_regional[["fecha","region","carga.lisup"]]
-A2_regional = A2_regional[["fecha","region","r.lisup80"]]
+A1_regional = A1_regional[["fecha","Codigo region","carga.lisup"]]
+A2_regional = A2_regional[["fecha","Codigo region","r.lisup80"]]
 B1_regional = B1_regional[["fecha","codigo_region","tasatest"]]
 B2_regional = B2_regional[["fecha","codigo_region","positividad"]]
-C2_regional = C2_regional[["fecha","region","prob48.linf"]]
+C2_regional = C2_regional[["fecha","Codigo region","prob48.linf"]]
 D1_regional = D1_regional[["fecha","codigo_region","Porcentaje Camas UCI"]]
 D2_regional = D2_regional[["fecha","codigo_region","COVID UCI"]]
-C3_regional = C3_regional[["fecha_notificacion","region","prop1d"]]
-C4_regional = C4_regional[["fecha_primeros_sintomas","region","prop2d"]]
-C5_regional = C5_regional[["fecha_primeros_sintomas","region","prop3d"]]
+C3_regional = C3_regional[["fecha_notificacion","Codigo region","prop1d"]]
+C4_regional = C4_regional[["fecha_primeros_sintomas","Codigo region","prop2d"]]
+C5_regional = C5_regional[["fecha_primeros_sintomas","Codigo region","prop3d"]]
 
 ######################################################################
 ####            CARGA INDICADORES NACIONALES TABLA 1              ####
@@ -223,14 +223,14 @@ D2_regional_T1["Inferior"] = 0
 ####            RENOMBRA COLUMNAS REGIONALES TABLA 1              ####
 ######################################################################
 
-A1_regional_T1 = A1_regional_T1.rename(columns={"fecha": "fecha", "carga.lisup": "Superior","carga.liminf": "Inferior" ,"carga.estimada": "Estimado","region":"cod_region"})
-A2_regional_T1 = A2_regional_T1.rename(columns={"fecha": "fecha", "r.lisup80": "Superior", "r.liminf80": "Inferior","r.estimado": "Estimado", "region":"cod_region"})
+A1_regional_T1 = A1_regional_T1.rename(columns={"fecha": "fecha", "carga.lisup": "Superior","carga.liminf": "Inferior" ,"carga.estimada": "Estimado","Codigo region":"cod_region"})
+A2_regional_T1 = A2_regional_T1.rename(columns={"fecha": "fecha", "r.lisup80": "Superior", "r.liminf80": "Inferior","r.estimado": "Estimado", "Codigo region":"cod_region"})
 B1_regional_T1 = B1_regional_T1.rename(columns={"fecha": "fecha","tasatest": "Estimado", "codigo_region":"cod_region"})
 B2_regional_T1 = B2_regional_T1.rename(columns={"fecha": "fecha","positividad": "Estimado","codigo_region":"cod_region"})
-C2_regional_T1 = C2_regional_T1.rename(columns={"fecha": "fecha","prob48.lsup": "Superior","prob48.linf": "Inferior","prob48.estimado": "Estimado", "region":"cod_region"})
-C3_regional_T1 = C3_regional_T1.rename(columns={"fecha_notificacion": "fecha","prop1d": "Estimado", "region":"cod_region"})
-C4_regional_T1 = C4_regional_T1.rename(columns={"fecha_primeros_sintomas": "fecha","prop2d": "Estimado", "region":"cod_region"})
-C5_regional_T1 = C5_regional_T1.rename(columns={"fecha_primeros_sintomas": "fecha","prop3d": "Estimado", "region":"cod_region"})
+C2_regional_T1 = C2_regional_T1.rename(columns={"fecha": "fecha","prob48.lsup": "Superior","prob48.linf": "Inferior","prob48.estimado": "Estimado", "Codigo region":"cod_region"})
+C3_regional_T1 = C3_regional_T1.rename(columns={"fecha_notificacion": "fecha","prop1d": "Estimado", "Codigo region":"cod_region"})
+C4_regional_T1 = C4_regional_T1.rename(columns={"fecha_primeros_sintomas": "fecha","prop2d": "Estimado", "Codigo region":"cod_region"})
+C5_regional_T1 = C5_regional_T1.rename(columns={"fecha_primeros_sintomas": "fecha","prop3d": "Estimado", "Codigo region":"cod_region"})
 D1_regional_T1 = D1_regional_T1.rename(columns={"fecha": "fecha","Porcentaje Camas UCI": "Estimado","codigo_region":"cod_region"})
 D2_regional_T1 = D2_regional_T1.rename(columns={"fecha": "fecha","COVID UCI": "Estimado","codigo_region":"cod_region"})
 
@@ -355,14 +355,14 @@ D2_regional["Indicador"] = "D2"
 ####            RENOMBRA COLUMNAS REGIONALES             ####
 #############################################################
 
-A1_regional = A1_regional.rename(columns={"fecha": "fecha", "carga.lisup": "Valor", "region":"cod_region"})
-A2_regional = A2_regional.rename(columns={"fecha": "fecha", "r.lisup80": "Valor", "region":"cod_region"})
+A1_regional = A1_regional.rename(columns={"fecha": "fecha", "carga.lisup": "Valor", "Codigo region":"cod_region"})
+A2_regional = A2_regional.rename(columns={"fecha": "fecha", "r.lisup80": "Valor", "Codigo region":"cod_region"})
 B1_regional = B1_regional.rename(columns={"fecha": "fecha","tasatest": "Valor", "codigo_region":"cod_region"})
 B2_regional = B2_regional.rename(columns={"fecha": "fecha","positividad": "Valor","codigo_region":"cod_region"})
-C2_regional = C2_regional.rename(columns={"fecha": "fecha","prob48.linf": "Valor", "region":"cod_region"})
-C3_regional = C3_regional.rename(columns={"fecha_notificacion": "fecha","prop1d": "Valor", "region":"cod_region"})
-C4_regional = C4_regional.rename(columns={"fecha_primeros_sintomas": "fecha","prop2d": "Valor", "region":"cod_region"})
-C5_regional = C5_regional.rename(columns={"fecha_primeros_sintomas": "fecha","prop3d": "Valor", "region":"cod_region"})
+C2_regional = C2_regional.rename(columns={"fecha": "fecha","prob48.linf": "Valor", "Codigo region":"cod_region"})
+C3_regional = C3_regional.rename(columns={"fecha_notificacion": "fecha","prop1d": "Valor", "Codigo region":"cod_region"})
+C4_regional = C4_regional.rename(columns={"fecha_primeros_sintomas": "fecha","prop2d": "Valor", "Codigo region":"cod_region"})
+C5_regional = C5_regional.rename(columns={"fecha_primeros_sintomas": "fecha","prop3d": "Valor", "Codigo region":"cod_region"})
 D1_regional = D1_regional.rename(columns={"fecha": "fecha","Porcentaje Camas UCI": "Valor","codigo_region":"cod_region"})
 D2_regional = D2_regional.rename(columns={"fecha": "fecha","COVID UCI": "Valor","codigo_region":"cod_region"})
 
