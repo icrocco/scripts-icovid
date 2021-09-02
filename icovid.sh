@@ -134,6 +134,11 @@ cd ${HOME}/datagov/ICOVID/dimension3/laboratorio/Provincial/;
 rm 'lab24.provincial.csv';
 wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto72/lab24.provincial.csv';
 
+cd ${HOME}/datagov/ICOVID;
+git add .;
+git commit -m "Pull manual del repo ${EXECUTIONDATE}";
+git push;
+
 cd ${ROOTPATH};
 
 echo "[$(date +"%F %T")] Generamos los archivos para las dimensiones de la 1 a la 4"
