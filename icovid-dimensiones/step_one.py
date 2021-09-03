@@ -21,14 +21,14 @@ uso_camas_uci_covid19_nacional = "https://raw.githubusercontent.com/datagovuc/IC
 tasa_var_semanal_hosp_covid19_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension4/varhosp/nacional/tasa%20de%20variacion%20semanal%20hospitalizaciones%20Covid-19%20Nacional.csv"
 
 ####  DATAFRAMES RESUMEN NACIONAL ####
-A1_nacional = pd.read_csv(carga_nacional_ajustada , encoding="utf-8", sep=";")
-A2_nacional = pd.read_csv(r_nacional , encoding="utf-8", sep=";")
+A1_nacional = pd.read_csv(carga_nacional_ajustada , encoding="utf-8", sep=",")
+A2_nacional = pd.read_csv(r_nacional , encoding="utf-8", sep=",")
 B1_nacional = pd.read_csv(tasa_test_semanal_nacional , encoding="utf-8", sep=",")
 B2_nacional = pd.read_csv(positividad_nacional , encoding="utf-8", sep=",")
-C2_nacional = pd.read_csv(prob48_nacional , encoding="utf-8", sep=";")
-C3_nacional = pd.read_csv(lab24_nacional , encoding="utf-8", sep=";")
-C4_nacional = pd.read_csv(not48_nacional , encoding="utf-8", sep=";")
-C5_nacional = pd.read_csv(total72_nacional , encoding="utf-8", sep=";")
+C2_nacional = pd.read_csv(prob48_nacional , encoding="utf-8", sep=",")
+C3_nacional = pd.read_csv(lab24_nacional , encoding="utf-8", sep=",")
+C4_nacional = pd.read_csv(not48_nacional , encoding="utf-8", sep=",")
+C5_nacional = pd.read_csv(total72_nacional , encoding="utf-8", sep=",")
 D1_nacional = pd.read_csv(uso_camas_uci_nacional , encoding="utf-8", sep=",")
 D2_nacional = pd.read_csv(uso_camas_uci_covid19_nacional , encoding="utf-8", sep=",")
 D4_nacional = pd.read_csv(tasa_var_semanal_hosp_covid19_nacional , encoding="utf-8", sep=",")
@@ -50,14 +50,14 @@ uso_camas_uci_regional = "https://raw.githubusercontent.com/datagovuc/ICOVID/mas
 uso_camas_uci_covid19_regional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension4/ucicovid/regional/Uso%20de%20camas%20UCI%20Covid-19%20Regional.csv"
 
 ####  DATAFRAMES RESUMEN REGIONAL ####
-A1_regional = pd.read_csv(carga_regional_ajustada , encoding="utf-8", sep=";")
-A2_regional = pd.read_csv(r_regional , encoding="utf-8", sep=";")
+A1_regional = pd.read_csv(carga_regional_ajustada , encoding="utf-8", sep=",")
+A2_regional = pd.read_csv(r_regional , encoding="utf-8", sep=",")
 B1_regional = pd.read_csv(tasa_test_semanal_regional , encoding="utf-8", sep=",")
 B2_regional = pd.read_csv(positividad_regional , encoding="utf-8", sep=",")
-C2_regional = pd.read_csv(prob48_regional , encoding="utf-8", sep=";")
-C3_regional = pd.read_csv(lab24_regional , encoding="utf-8", sep=";")
-C4_regional = pd.read_csv(not48_regional , encoding="utf-8", sep=";")
-C5_regional = pd.read_csv(total72_regional , encoding="utf-8", sep=";")
+C2_regional = pd.read_csv(prob48_regional , encoding="utf-8", sep=",")
+C3_regional = pd.read_csv(lab24_regional , encoding="utf-8", sep=",")
+C4_regional = pd.read_csv(not48_regional , encoding="utf-8", sep=",")
+C5_regional = pd.read_csv(total72_regional , encoding="utf-8", sep=",")
 D1_regional = pd.read_csv(uso_camas_uci_regional , encoding="utf-8", sep=",")
 D2_regional = pd.read_csv(uso_camas_uci_covid19_regional , encoding="utf-8", sep=",")
 
