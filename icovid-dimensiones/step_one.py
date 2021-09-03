@@ -114,8 +114,8 @@ D4_nacional = D4_nacional[["fecha","Totales"]]
 
 A1_regional = A1_regional[["fecha","Codigo region","carga.lisup"]]
 A2_regional = A2_regional[["fecha","Codigo region","r.lisup80"]]
-B1_regional = B1_regional[["fecha","codigo_region","tasatest"]]
-B2_regional = B2_regional[["fecha","codigo_region","positividad"]]
+B1_regional = B1_regional[["fecha","Codigo region","tasatest"]]
+B2_regional = B2_regional[["fecha","Codigo region","positividad"]]
 C2_regional = C2_regional[["fecha","Codigo region","prob48.linf"]]
 D1_regional = D1_regional[["fecha","codigo_region","Porcentaje Camas UCI"]]
 D2_regional = D2_regional[["fecha","codigo_region","COVID UCI"]]
@@ -137,8 +137,8 @@ D4_nacional_T1 = D4_nacional_T1[["fecha","Totales"]]
 ####            CARGA INDICADORES REGIONALES TABLA 1              ####
 ######################################################################
 
-B1_regional_T1 = B1_regional_T1[["fecha","codigo_region","tasatest",]]
-B2_regional_T1 = B2_regional_T1[["fecha","codigo_region","positividad"]]
+B1_regional_T1 = B1_regional_T1[["fecha","Codigo region","tasatest",]]
+B2_regional_T1 = B2_regional_T1[["fecha","Codigo region","positividad"]]
 D1_regional_T1 = D1_regional_T1[["fecha","codigo_region","Porcentaje Camas UCI"]]
 D2_regional_T1 = D2_regional_T1[["fecha","codigo_region","COVID UCI"]]
 
