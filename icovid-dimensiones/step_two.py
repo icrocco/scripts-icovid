@@ -256,11 +256,11 @@ nacional_T2_mean.to_excel(f"{ruta_base_paso2}/tabla2_nacional.xlsx", index=False
 
 ##### NACIONAL #####
 confirmados_nacional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension1/carga/nacional/confirmados%20nacional.csv"
-A1_nacional_T1_prom = pd.read_csv(confirmados_nacional, encoding="utf-8", sep=";")
+A1_nacional_T1_prom = pd.read_csv(confirmados_nacional, encoding="utf-8", sep=",")
 
 ##### REGIONAL #####
 confirmados_regional = "https://raw.githubusercontent.com/datagovuc/ICOVID/master/dimension1/carga/regional/confirmados_regionales.csv"
-A1_regional_T1_prom = pd.read_csv(confirmados_regional, encoding="utf-8", sep=";")
+A1_regional_T1_prom = pd.read_csv(confirmados_regional, encoding="utf-8", sep=",")
 
 A1_nacional_T1_prom["fecha"] = pd.to_datetime(A1_nacional_T1_prom["fecha"])             # Cambiamos el tipo de dato del campo fecha a datetime64
 A1_regional_T1_prom["fecha"] = pd.to_datetime(A1_regional_T1_prom["fecha"])             # Cambiamos el tipo de dato del campo fecha a datetime64
@@ -296,7 +296,7 @@ TT3_q975_domingo_nacional = TT3_q975_domingo_nacional.reset_index()
 TT3_carga_nacional_dif = TT3_prom_col_domingo_nacional.merge(TT3_q0275_domingo_nacional, how="left", on="index")
 TT3_carga_nacional_dif = TT3_carga_nacional_dif.merge(TT3_q975_domingo_nacional, how="left", on="index")
 
-TT3_carga_nacional_dif["region"] = 0
+TT3_carga_nacional_dif["Region"] = 0
 TT3_carga_nacional_dif_rename = TT3_carga_nacional_dif.rename(columns={"index": "Domingo_semana"})    # Renombramos columnas
 
 ##########      EXPORTAMOS A .CSV     ##########
@@ -311,10 +311,10 @@ TT3_carga_nacional_dif_rename.to_excel(f"{ruta_base_paso2}/carga_nacional_prom_d
 
 ##### Para domingo de la semana en curso de la data
 TT11_regional = A1_regional_T1_prom.merge(dim_periodo_domingo_semana, how="left")
-TT11_prom_domingo_regional = TT11_regional.groupby(["Domingo_semana","region"]).mean()
+TT11_prom_domingo_regional = TT11_regional.groupby(["Domingo_semana","Region"]).mean()
 
 TT22_regional = A1_regional_T1_prom.merge(dim_periodo_domingo_semana_sig_reg, how="left", on="fecha")
-TT22_prom_domingo_regional_ant = TT22_regional.groupby(["Domingo_semana", "region"]).mean()
+TT22_prom_domingo_regional_ant = TT22_regional.groupby(["Domingo_semana", "Region"]).mean()
 
 TT33_prom_domingo_regional = TT11_prom_domingo_regional.subtract(TT22_prom_domingo_regional_ant, axis="columns", fill_value=0)
 
@@ -329,8 +329,8 @@ TT33_q975_domingo_regional = TT33_q975_domingo_regional.reset_index()
 TT33_prom_col_domingo_regional = TT33_prom_col_domingo_regional.reset_index() 
 
 # Merge para dejar solo un data frame
-TT33_carga_regional_dif =  TT33_prom_col_domingo_regional.merge(TT33_q0275_domingo_regional, on=["Domingo_semana", "region"], how="left")
-TT33_carga_regional_dif =  TT33_carga_regional_dif.merge(TT33_q975_domingo_regional, on=["Domingo_semana", "region"], how="left")
+TT33_carga_regional_dif =  TT33_prom_col_domingo_regional.merge(TT33_q0275_domingo_regional, on=["Domingo_semana", "Region"], how="left")
+TT33_carga_regional_dif =  TT33_carga_regional_dif.merge(TT33_q975_domingo_regional, on=["Domingo_semana", "Region"], how="left")
 
 ##########      EXPORTAMOS A .CSV     ##########
 TT33_carga_regional_dif.to_csv(f"{ruta_base_paso2}/carga_regional_paso2_promedio_dif_{hoy}.csv", index=False)
@@ -359,7 +359,7 @@ TT1_prom_col_domingo = TT1_prom_col_domingo.reset_index()
 TT1_carga_nacional =  TT1_prom_col_domingo.merge(TT1_q0275_domingo, how="left", on="Domingo_semana")
 TT1_carga_nacional =  TT1_carga_nacional.merge(TT1_q975_domingo, how="left", on="Domingo_semana")
 
-TT1_carga_nacional["region"] = 0
+TT1_carga_nacional["Region"] = 0
 
 ##########      EXPORTAMOS A .CSV     ##########
 TT1_carga_nacional.to_csv(f"{ruta_base_paso2}/carga_nacional_paso2_promedio_{hoy}.csv", index=False)
@@ -372,10 +372,10 @@ TT1_carga_nacional.to_excel(f"{ruta_base_paso2}/carga_nacional_prom.xlsx", index
 ########################################################################
 
 TT1_reg = A1_regional_T1_prom.merge(dim_periodo_domingo_semana, how="left", on="fecha")
-TT1_prom_domingo_reg = TT1_reg.groupby(["Domingo_semana", "region"]).mean().reset_index()
+TT1_prom_domingo_reg = TT1_reg.groupby(["Domingo_semana", "Region"]).mean().reset_index()
 
 # aplicar y fijar columnas como indices
-TT1_prom_domingo_reg = TT1_prom_domingo_reg.set_index(["Domingo_semana", "region"]) 
+TT1_prom_domingo_reg = TT1_prom_domingo_reg.set_index(["Domingo_semana", "Region"]) 
 
 #  Aplicar promedios e intervalos de confianza a los promedios semanales
 TT1_prom_col_domingo_reg = TT1_prom_domingo_reg.mean(axis="columns").round(1).reset_index()
@@ -384,8 +384,8 @@ TT1_q975_col_domingo_reg = TT1_prom_domingo_reg.quantile(0.975, axis="columns").
 
 
 # Merge para dejar solo un data frame
-TT1_carga_regional =  TT1_prom_col_domingo_reg.merge(TT1_q0275_col_domingo_reg, how="left", on=["Domingo_semana","region"])
-TT1_carga_regional =  TT1_carga_regional.merge(TT1_q975_col_domingo_reg, how="left", on=["Domingo_semana","region"])
+TT1_carga_regional =  TT1_prom_col_domingo_reg.merge(TT1_q0275_col_domingo_reg, how="left", on=["Domingo_semana","Region"])
+TT1_carga_regional =  TT1_carga_regional.merge(TT1_q975_col_domingo_reg, how="left", on=["Domingo_semana","Region"])
 
 ##########      EXPORTAMOS A .CSV     ##########
 TT1_carga_regional.to_csv(f"{ruta_base_paso2}/carga_regional_paso2_promedio_{hoy}.csv", index=False)

@@ -123,6 +123,7 @@ C3_regional = C3_regional[["fecha_notificacion","Codigo region","prop1d"]]
 C4_regional = C4_regional[["fecha_primeros_sintomas","Codigo region","prop2d"]]
 C5_regional = C5_regional[["fecha_primeros_sintomas","Codigo region","prop3d"]]
 
+print("vamos acá")
 ######################################################################
 ####            CARGA INDICADORES NACIONALES TABLA 1              ####
 ######################################################################
@@ -225,8 +226,8 @@ D2_regional_T1["Inferior"] = 0
 
 A1_regional_T1 = A1_regional_T1.rename(columns={"fecha": "fecha", "carga.lisup": "Superior","carga.liminf": "Inferior" ,"carga.estimada": "Estimado","Codigo region":"cod_region"})
 A2_regional_T1 = A2_regional_T1.rename(columns={"fecha": "fecha", "r.lisup80": "Superior", "r.liminf80": "Inferior","r.estimado": "Estimado", "Codigo region":"cod_region"})
-B1_regional_T1 = B1_regional_T1.rename(columns={"fecha": "fecha","tasatest": "Estimado", "codigo_region":"cod_region"})
-B2_regional_T1 = B2_regional_T1.rename(columns={"fecha": "fecha","positividad": "Estimado","codigo_region":"cod_region"})
+B1_regional_T1 = B1_regional_T1.rename(columns={"fecha": "fecha","tasatest": "Estimado", "Codigo region":"cod_region"})
+B2_regional_T1 = B2_regional_T1.rename(columns={"fecha": "fecha","positividad": "Estimado","Codigo region":"cod_region"})
 C2_regional_T1 = C2_regional_T1.rename(columns={"fecha": "fecha","prob48.lsup": "Superior","prob48.linf": "Inferior","prob48.estimado": "Estimado", "region":"cod_region"})
 C3_regional_T1 = C3_regional_T1.rename(columns={"fecha_notificacion": "fecha","prop1d": "Estimado", "Codigo region":"cod_region"})
 C4_regional_T1 = C4_regional_T1.rename(columns={"fecha_primeros_sintomas": "fecha","prop2d": "Estimado", "Codigo region":"cod_region"})
@@ -266,6 +267,8 @@ D1_nacional = D1_nacional.rename(columns={"fecha": "fecha","Nacional": "Valor"})
 D2_nacional = D2_nacional.rename(columns={"fecha": "fecha","COVID UCI Nacional": "Valor"})
 D4_nacional = D4_nacional.rename(columns={"fecha": "fecha","Totales": "Valor"})
 
+
+print("Control 2")
 
 #### INDICADOR A1: CARGA
 A1_nacional.loc[A1_nacional["Valor"] <= 1, "cod_color"] = "1"
@@ -357,8 +360,8 @@ D2_regional["Indicador"] = "D2"
 
 A1_regional = A1_regional.rename(columns={"fecha": "fecha", "carga.lisup": "Valor", "Codigo region":"cod_region"})
 A2_regional = A2_regional.rename(columns={"fecha": "fecha", "r.lisup80": "Valor", "Codigo region":"cod_region"})
-B1_regional = B1_regional.rename(columns={"fecha": "fecha","tasatest": "Valor", "codigo_region":"cod_region"})
-B2_regional = B2_regional.rename(columns={"fecha": "fecha","positividad": "Valor","codigo_region":"cod_region"})
+B1_regional = B1_regional.rename(columns={"fecha": "fecha","tasatest": "Valor", "Codigo region":"cod_region"})
+B2_regional = B2_regional.rename(columns={"fecha": "fecha","positividad": "Valor","Codigo region":"cod_region"})
 C2_regional = C2_regional.rename(columns={"fecha": "fecha","prob48.linf": "Valor", "Codigo region":"cod_region"})
 C3_regional = C3_regional.rename(columns={"fecha_notificacion": "fecha","prop1d": "Valor", "Codigo region":"cod_region"})
 C4_regional = C4_regional.rename(columns={"fecha_primeros_sintomas": "fecha","prop2d": "Valor", "Codigo region":"cod_region"})
@@ -483,6 +486,7 @@ result_nacional_T1_final.to_excel(ruta_nacional_excel_T1, index=False)
 #### REGIONAL
 frames_r = [A1_regional, A2_regional, B1_regional, B2_regional, C2_regional, C3_regional, C4_regional, C5_regional, D1_regional, D2_regional]
 result_regional = pd.concat(frames_r, sort=True) #concatenamos en un solo gran dataframe
+result_regional = result_regional[["Indicador", "Valor", "cod_color", "cod_region", "fecha"]] # Se eliminan la columna region
 result_regional_final = result_regional.dropna() #we drop NaN values
 
 #### NACIONAL
