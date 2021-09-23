@@ -25,6 +25,10 @@ cd ${HOME}/datagov/ICOVID/dimension1/R/Provincial/;
 rm 'r.provincial_n.csv';
 wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto54/r.provincial_n.csv';
 
+cd ${HOME}/datagov/ICOVID/dimension1/R/SS/;
+rm 'r.ss_n.csv';
+wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto54/r.ss_n.csv';
+
 cd ${HOME}/datagov/ICOVID/dimension1/carga/nacional/;
 rm 'carga.nacional.ajustada.csv';
 wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.nacional.ajustada.csv';
