@@ -107,9 +107,9 @@ aux_join_final["cobertura"] = round(100 * (aux_join_final["segunda_dosis"] + aux
 nacional = aux_join_final[["Fecha", "avance", "cobertura"]]
 copy_nacional = nacional.copy()
 copy_nacional.loc[copy_nacional.cobertura < 50, "rango_cobertura"] = "<50" # rojo
-copy_nacional.loc[(copy_nacional.cobertura < 70) & (copy_nacional.cobertura > 49), "rango_cobertura"] = "50-69" # naranjo
-copy_nacional.loc[(copy_nacional.cobertura < 90) & (copy_nacional.cobertura > 69), "rango_cobertura"] = "70-89" # amarillo
-copy_nacional.loc[copy_nacional.cobertura > 89, "rango_cobertura"] = ">=90" # verde
+copy_nacional.loc[(copy_nacional.cobertura < 70) & (copy_nacional.cobertura >= 50), "rango_cobertura"] = "[50-70[" # naranjo
+copy_nacional.loc[(copy_nacional.cobertura < 90) & (copy_nacional.cobertura >= 70), "rango_cobertura"] = "[70-90[" # amarillo
+copy_nacional.loc[copy_nacional.cobertura >= 90, "rango_cobertura"] = ">=90" # verde
 
 copy_nacional.to_csv(f"{dir_path}/archivos_nuevos_vacunas/total_nacional_vacunas.csv", index=False)
 
