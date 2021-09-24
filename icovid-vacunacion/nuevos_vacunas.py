@@ -74,9 +74,9 @@ reg_sum = reg_final[["region_nombre", "Fecha", "avance_porcentual", "cobertura_p
 ## RANGOS DE PORCENTAJES DE COBERTURA ##
 copy_reg_sum = reg_sum.copy()
 copy_reg_sum.loc[copy_reg_sum.cobertura_porcentual < 50, "rango_cobertura"] = "<50" # rojo
-copy_reg_sum.loc[(copy_reg_sum.cobertura_porcentual < 70) & (copy_reg_sum.cobertura_porcentual > 49), "rango_cobertura"] = "50-69" # naranjo
-copy_reg_sum.loc[(copy_reg_sum.cobertura_porcentual < 90) & (copy_reg_sum.cobertura_porcentual > 69), "rango_cobertura"] = "70-89" # amarillo
-copy_reg_sum.loc[copy_reg_sum.cobertura_porcentual > 89, "rango_cobertura"] = ">=90" # verde
+copy_reg_sum.loc[(copy_reg_sum.cobertura_porcentual < 70) & (copy_reg_sum.cobertura_porcentual >= 50), "rango_cobertura"] = "[50-70[" # naranjo
+copy_reg_sum.loc[(copy_reg_sum.cobertura_porcentual < 90) & (copy_reg_sum.cobertura_porcentual >= 70), "rango_cobertura"] = "[70-90[" # amarillo
+copy_reg_sum.loc[copy_reg_sum.cobertura_porcentual >= 90, "rango_cobertura"] = ">=90" # verde
 
 if os.path.exists(f"{dir_path}/archivos_nuevos_vacunas"):
     shutil.rmtree(f"{dir_path}/archivos_nuevos_vacunas")
