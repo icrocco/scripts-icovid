@@ -42,7 +42,7 @@ dir_path = os.path.abspath(os.path.dirname(__file__))
 ine = pd.read_csv(f"ine.csv")
 ine = ine.dropna()
 ine = ine.replace({"100+": "100"})
-ine = ine[1:-1] # consideramos el universo de población desde los 18 años
+ine = ine[1:-1] # consideramos el universo de población desde 1 año 
 ine = ine.astype({"EDAD": int, "2020": int, "2021": int})
 
 copy_ine = ine.copy()
