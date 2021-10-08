@@ -39,7 +39,7 @@ segunda_dosis = copy_segunda.groupby(["edad", "fecha"]).segunda_dosis.sum().rese
 
 #### INE CENSO POBLACIÓN ####
 dir_path = os.path.abspath(os.path.dirname(__file__))
-ine = pd.read_csv(f"ine.csv")
+ine = pd.read_csv(f"{dir_path}/ine/ine_2020_2021.csv")
 ine = ine.dropna()
 ine = ine.replace({"100+": "100"})
 ine = ine[1:-1] # consideramos el universo de población desde 1 año 
