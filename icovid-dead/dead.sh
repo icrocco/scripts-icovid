@@ -9,7 +9,7 @@ MONTH=$(date +%m);
 #MONTH="08";
 YEAR=$(date +%Y);
 ZIPFILE="DEFUNCIONES_FUENTE_DEIS_2016_${YEAR}_${FILEDATE}.zip";
-URL="https://repositoriodeis.minsal.cl/DatosAbiertos/VITALES/wp-content/uploads/${YEAR}/${MONTH}/${ZIPFILE}"; 
+URL="https://repositoriodeis.minsal.cl/wp-content/uploads/${YEAR}/${MONTH}/${ZIPFILE}"; 
 WORKFILES=${HOME}/datagov/scripts-icovid/icovid-dead/work-files;
 
 cd ${WORKFILES};
