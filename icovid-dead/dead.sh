@@ -2,8 +2,8 @@
 
 set -e;
 
-#FILEDATE=$(date --date="last thursday" +%d%m%Y);
-FILEDATE="28102021";
+FILEDATE=$(date --date="last thursday" +%d%m%Y);
+#FILEDATE="28102021";
 TODAY=$(date +%Y%m%d);
 MONTH=$(date +%m);
 #MONTH="08";
