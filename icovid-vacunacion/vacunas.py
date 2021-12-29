@@ -11,6 +11,7 @@ vacunas_tercera_dosis = "https://raw.githubusercontent.com/MinCiencia/Datos-COVI
 
 df_primera = pd.read_csv(vacunas_primera_dosis).dropna()
 df_segunda = pd.read_csv(vacunas_segunda_dosis).dropna()
+df_tercera = pd.read_csv(vacunas_tercera_dosis).dropna()
 
 #### PRIMERA DOSIS ####
 df_primera = df_primera.rename(columns={"Edad": "edad", "Fecha": "fecha", "Primera Dosis": "primera_dosis"})
@@ -39,7 +40,7 @@ copy_segunda.loc[df_segunda.edad >= 70, "edad"] = ">=70"
 segunda_dosis = copy_segunda.groupby(["edad", "fecha"]).segunda_dosis.sum().reset_index()
 
 #### TERCERA DOSIS ####
-df_tercera = df_tercera.rename(columns={"Edad": "edad", "Fecha": "fecha", "Tercera Dosis": "tercera_dosis"})
+df_tercera = df_tercera.rename(columns={"Edad": "edad", "Fecha": "fecha", "Dosis Refuerzo": "tercera_dosis"})
 df_tercera = df_tercera.astype({"edad": int, "tercera_dosis": int})
 
 copy_tercera = df_tercera.copy()
