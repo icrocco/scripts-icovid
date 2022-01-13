@@ -2,13 +2,13 @@
 
 set -e;
 
-FILEDATE=$(date --date="last thursday" +%d%m%Y);
-#FILEDATE="28102021";
+#FILEDATE=$(date --date="last thursday" +%d%m%Y);
+FILEDATE="07012022";
 TODAY=$(date +%Y%m%d);
 MONTH=$(date +%m);
 #MONTH="08";
 YEAR=$(date +%Y);
-ZIPFILE="DEFUNCIONES_FUENTE_DEIS_2016_${YEAR}_${FILEDATE}.zip";
+ZIPFILE="DEFUNCIONES_FUENTE_DEIS_2016_2021_${FILEDATE}.zip";
 URL="https://repositoriodeis.minsal.cl/DatosAbiertos/VITALES/${ZIPFILE}"; 
 WORKFILES=${HOME}/datagov/scripts-icovid/icovid-dead/work-files;
 
