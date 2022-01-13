@@ -23,8 +23,8 @@ def main(url: str):
     intermediate_df = intermediate_df.astype({"week": int})          # transformamos la semana del año a int
 
     # correlativo de final_dfs
-    # intermediate_df.week[intermediate_df.year == "2021"] = intermediate_df.week[intermediate_df.year == "2021"] + 53
-    intermediate_df.week = np.where(intermediate_df.year == "2021", intermediate_df.week + 53, intermediate_df.week)
+    # intermediate_df.week[intermediate_df.year == "2022"] = intermediate_df.week[intermediate_df.year == "2022"] + 53
+    intermediate_df.week = np.where(intermediate_df.year == "2022", intermediate_df.week + 53, intermediate_df.week)
 
     # hacemos un mapeo a los nuevos rangos etáreos según url
     age_map = {"<=39":"<50", "40-49":"<50", "50-59":"50-69", "60-69":"50-69", ">=70":">=70"}
