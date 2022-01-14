@@ -20,7 +20,7 @@ def main():
     df["for_counting"] = 1
 
     # Al restar 1, la ultima final_df 2020 queda en la misma final_df que la primera del 2021
-    df.week = np.where(df.year == "2021", df.week + 53, df.week)
+    df.week = np.where(df.year == "2022", df.week + 53, df.week)
     df.week = np.where(df.week >= 53, df.week - 1, df.week)
 
     # generamos las columnas de fecha min y max agrupando por número de final_df
