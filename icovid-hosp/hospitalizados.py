@@ -24,7 +24,7 @@ def main(url: str):
 
     # correlativo de final_dfs
     # intermediate_df.week[intermediate_df.year == "2022"] = intermediate_df.week[intermediate_df.year == "2022"] + 53
-    intermediate_df.week = np.where(intermediate_df.year == "2022", intermediate_df.week + 53, intermediate_df.week)
+    intermediate_df.week = np.where(intermediate_df.year == "2021", intermediate_df.week + 53, np.where(intermediate_df.year == "2022", intermediate_df.week + 105,intermediate_df.week))
 
     # hacemos un mapeo a los nuevos rangos etáreos según url
     age_map = {"<=39":"<50", "40-49":"<50", "50-59":"50-69", "60-69":"50-69", ">=70":">=70"}
@@ -33,6 +33,7 @@ def main(url: str):
 
     # Al restar 1, la ultima final_df 2020 queda en la misma final_df que la primera del 2021
     # intermediate_df.week[intermediate_df.week >= 53] = intermediate_df.week[intermediate_df.week >= 53] - 1
+    #intermediate_df.week = np.where(intermediate_df.week >= 53, intermediate_df.week - 1, np.where(intermediate_df.week >= 106, intermediate_df.week - 2, intermediate_df.week))
     intermediate_df.week = np.where(intermediate_df.week >= 53, intermediate_df.week - 1, intermediate_df.week)
 
     # generamos las columnas de fecha min y max agrupando por número de final_df
@@ -72,3 +73,4 @@ if __name__ == "__main__":
     df_reducido_hosp, df_sabana_hosp = main(hosp_uci_etario)
     df_sabana_hosp.to_csv(ruta_hospitalizados_sabana, index=False)
     df_reducido_hosp.to_csv(ruta_hospitalizados, index=False)
+   
