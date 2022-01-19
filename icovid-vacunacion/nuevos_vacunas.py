@@ -140,8 +140,8 @@ vac_unica = vac_unica.rename(columns={"Unica Dosis": "cantidad"})
 vac_unica["dosis"] = "unica"
 
 vac_tercera = pd.read_csv(url_tercera)
-vac_tercera = vac_tercera.groupby(["Fecha"])["Refuerzo"].sum().reset_index()
-vac_tercera = vac_tercera.rename(columns={"Refuerzo": "cantidad"})
+vac_tercera = vac_tercera.groupby(["Fecha"])["Dosis Refuerzo"].sum().reset_index()
+vac_tercera = vac_tercera.rename(columns={"Dosis Refuerzo": "cantidad"})
 vac_tercera["dosis"] = "tercera"
 
 total = pd.concat([vac_primera, vac_segunda, vac_unica, vac_tercera])
