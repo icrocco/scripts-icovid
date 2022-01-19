@@ -25,7 +25,10 @@ reg_segunda = reg_segunda[["segunda_dosis"]].reset_index(drop=True)
 reg_unica = regiones.loc[regiones.Dosis == "Unica"].rename(columns={"Cantidad": "unica_dosis"})
 reg_unica = reg_unica[["unica_dosis"]].reset_index(drop=True)
 
-reg = pd.concat([reg_primera, reg_segunda, reg_unica], axis=1)
+reg_tercera = regiones.loc[regiones.Dosis == "Refuerzo"].rename(columns={"Cantidad": "tercera_dosis"})
+reg_tercera = reg_tercera[["tercera_dosis"]].reset_index(drop=True)
+
+reg = pd.concat([reg_primera, reg_segunda, reg_unica, reg_tercera], axis=1)
 reg = reg.rename(columns={"Region": "region_nombre"})
 
 dic_reg = {
@@ -95,6 +98,8 @@ aux_segunda_nac = total_nacional.loc[total_nacional.Dosis == "Segunda"].rename(c
 aux_segunda_nac = aux_segunda_nac[["Fecha", "segunda_dosis"]]
 aux_unica_nac = total_nacional.loc[total_nacional.Dosis == "Unica"].rename(columns={"Cantidad": "unica_dosis"})
 aux_unica_nac = aux_unica_nac[["Fecha", "unica_dosis"]]
+aux_tercera_nac = total_nacional.loc[total_nacional.Dosis == "Refuerzo"].rename(columns={"Cantidad": "tercera_dosis"})
+aux_tercera_nac = aux_tercera_nac[["Fecha", "tercera_dosis"]]
 
 aux_join = aux_primera_nac.merge(aux_segunda_nac, on="Fecha", how="left")
 aux_join_final = aux_join.merge(aux_unica_nac, on="Fecha", how="left")
@@ -117,6 +122,7 @@ copy_nacional.to_csv(f"{dir_path}/archivos_nuevos_vacunas/total_nacional_vacunas
 url_primera = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_1eraDosis_std.csv"
 url_segunda = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_2daDosis_std.csv"
 url_unica = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_UnicaDosis_std.csv"
+url_tercera = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_Refuerzo_std.csv"
 
 vac_primera = pd.read_csv(url_primera)
 vac_primera = vac_primera.groupby(["Fecha"])["Primera Dosis"].sum().reset_index()
@@ -133,5 +139,10 @@ vac_unica = vac_unica.groupby(["Fecha"])["Unica Dosis"].sum().reset_index()
 vac_unica = vac_unica.rename(columns={"Unica Dosis": "cantidad"})
 vac_unica["dosis"] = "unica"
 
-total = pd.concat([vac_primera, vac_segunda, vac_unica])
+vac_tercera = pd.read_csv(url_tercera)
+vac_tercera = vac_tercera.groupby(["Fecha"])["Refuerzo"].sum().reset_index()
+vac_tercera = vac_tercera.rename(columns={"Refuerzo": "cantidad"})
+vac_tercera["dosis"] = "tercera"
+
+total = pd.concat([vac_primera, vac_segunda, vac_unica, vac_tercera])
 total.to_csv(f"{dir_path}/archivos_nuevos_vacunas/consolidado_vacunas.csv", index=False)
