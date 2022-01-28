@@ -48,6 +48,12 @@ Y luego ejecutar lo siguiente:
 ./icovid.sh <usuario_windows>
 ```
 
+Si no funciona, probar con:
+
+```bash
+bash icovid.sh <usuario_windows>
+```
+
 Donde `<usuario_windows>` es el nombre de usuario que tienen en Windows, por ejemplo, `valea`. Esto es necesario pues así vamos a hacer una copia de solo los archivos necesario en la carpeta `Documentos` de Windows. Siguiendo con el ejemplo, el comando a ejcutar sería:
 
 ```bash
