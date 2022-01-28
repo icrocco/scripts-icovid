@@ -39,7 +39,7 @@ datagov
 Para generar los archivos que se cargan en Google Drive debemos, primero, cambiarnos al directorio `scripts-icovid`:
 
 ```bash
-cd scripts-icovid
+cd datagov/scripts-icovid
 ```
 
 Y luego ejecutar lo siguiente:
