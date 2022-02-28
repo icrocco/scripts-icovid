@@ -18,7 +18,7 @@ unzip ${ZIPFILE};
 
 # Cambiamos el encoding de Latin-1 (ISO-8859-1) a UTF-8
 iconv --from-code=iso-8859-1 --to-code=utf-8 DEFUNCIONES_FUENTE_DEIS_2016_2022_${FILEDATE}.csv > fallecidos-utf8.csv;
-rm DEFUNCIONES_FUENTE_DEIS_2016_2021_${FILEDATE}.csv;
+rm DEFUNCIONES_FUENTE_DEIS_2016_2022_${FILEDATE}.csv;
 
 # Generamos el subset de fallecimiento COVID
 egrep "U071|U072" fallecidos-utf8.csv > fallecidos-subset-utf8.csv; # use this one for "universal" use
