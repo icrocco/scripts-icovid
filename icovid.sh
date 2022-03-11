@@ -6,6 +6,11 @@ PATHDOC="/mnt/c/Users/${1}/Documents"; # ponemos el nombre usuario en Windows
 ROOTPATH="${HOME}/datagov/scripts-icovid";
 ROOTPATH2="${HOME}/datagov";
 
+echo "Copiando archivo producto 24"
+
+cd ${PATHDOC}/ICOVID;
+wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto24/CamasHospital_Diario_std.csv';
+
 echo "[$(date +"%F %T")] Git pull al repo de ICOVID"
 
 cd ${HOME}/datagov/ICOVID;
