@@ -6,11 +6,6 @@ PATHDOC="/mnt/c/Users/${1}/Documents"; # ponemos el nombre usuario en Windows
 ROOTPATH="${HOME}/datagov/scripts-icovid";
 ROOTPATH2="${HOME}/datagov";
 
-echo "Copiando archivo producto 24"
-
-cd ${PATHDOC}/ICOVID;
-wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto24/CamasHospital_Diario_std.csv';
-
 echo "[$(date +"%F %T")] Git pull al repo de ICOVID"
 
 cd ${HOME}/datagov/ICOVID;
@@ -205,6 +200,10 @@ if [ ! -d "${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE}" ]; then
   sudo cp ${ROOTPATH}/icovid-hosp/archivos_hospitalizados/${EXECUTIONDATE}/hospitalizados_etario.csv ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE};
   sudo cp ${ROOTPATH}/icovid-vacunacion/archivos_vacunas/*.csv ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE};
   sudo cp ${ROOTPATH}/icovid-vacunacion/archivos_nuevos_vacunas/*.csv ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE};
+  echo "Copiando archivo producto 24"
+  cd ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE};
+  rm 'CamasHospital_Diario_std.csv'
+  wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto24/CamasHospital_Diario_std.csv';
 else
   sudo mkdir -p ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE}_${UNIXTIME};
   sudo mv ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE}/* ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE}_${UNIXTIME};
@@ -212,6 +211,10 @@ else
   sudo cp ${ROOTPATH}/icovid-hosp/archivos_hospitalizados/${EXECUTIONDATE}/hospitalizados_etario.csv ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE};
   sudo cp ${ROOTPATH}/icovid-vacunacion/archivos_vacunas/*.csv ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE};
   sudo cp ${ROOTPATH}/icovid-vacunacion/archivos_nuevos_vacunas/*.csv ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE};
+  echo "Copiando archivo producto 24"
+  cd ${PATHDOC}/ICOVID/nuevas-visualizaciones/${EXECUTIONDATE};
+  rm 'CamasHospital_Diario_std.csv'
+  wget 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto24/CamasHospital_Diario_std.csv';
 fi
 
 echo "[$(date +"%F %T")] Proceso finalizado con éxito"
