@@ -3,7 +3,7 @@
 set -e;
 
 #FILEDATE=$(date --date="last thursday" +%d%m%Y);
-FILEDATE="28042022";
+FILEDATE="05052022";
 TODAY=$(date +%Y%m%d);
 MONTH=$(date +%m);
 #MONTH="08";
