@@ -8,10 +8,12 @@ warnings.filterwarnings("ignore")
 vacunas_primera_dosis = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_1eraDosis_std.csv"
 vacunas_segunda_dosis = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_2daDosis_std.csv"
 vacunas_tercera_dosis = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_Refuerzo_std.csv"
+vacunas_cuarta_dosis = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto78/vacunados_edad_fecha_Cuarta_std.csv"
 
 df_primera = pd.read_csv(vacunas_primera_dosis).dropna()
 df_segunda = pd.read_csv(vacunas_segunda_dosis).dropna()
 df_tercera = pd.read_csv(vacunas_tercera_dosis).dropna()
+df_cuarta = pd.read_csv(vacunas_cuarta_dosis).dropna()
 
 #### PRIMERA DOSIS ####
 df_primera = df_primera.rename(columns={"Edad": "edad", "Fecha": "fecha", "Primera Dosis": "primera_dosis"})
@@ -51,6 +53,19 @@ copy_tercera.loc[(df_tercera.edad < 70) & (df_tercera.edad >= 50), "edad"] = "50
 copy_tercera.loc[df_tercera.edad >= 70, "edad"] = ">=70"
 
 tercera_dosis = copy_tercera.groupby(["edad", "fecha"]).tercera_dosis.sum().reset_index()
+
+#### CUARTA DOSIS ####
+df_cuarta = df_cuarta.rename(columns={"Edad": "edad", "Fecha": "fecha", "Cuarta Dosis": "cuarta_dosis"})
+df_cuarta = df_cuarta.astype({"edad": int, "cuarta_dosis": int})
+
+copy_cuarta = df_cuarta.copy()
+
+copy_cuarta.loc[df_cuarta.edad < 18, "edad"] = "<18"
+copy_cuarta.loc[(df_cuarta.edad < 50) & (df_cuarta.edad >= 18), "edad"] = "18-49"
+copy_cuarta.loc[(df_cuarta.edad < 70) & (df_cuarta.edad >= 50), "edad"] = "50-69"
+copy_cuarta.loc[df_cuarta.edad >= 70, "edad"] = ">=70"
+
+cuarta_dosis = copy_cuarta.groupby(["edad", "fecha"]).cuarta_dosis.sum().reset_index()
 
 #### INE CENSO POBLACIÓN ####
 dir_path = os.path.abspath(os.path.dirname(__file__))
@@ -137,3 +152,23 @@ tercera_dosis_tier_four["cobertura_procentual"] = round(tercera_dosis_tier_four[
 tercera_final = pd.concat([tercera_dosis_tier_one, tercera_dosis_tier_two, tercera_dosis_tier_three, tercera_dosis_tier_four])
 
 tercera_final.to_csv(f"{dir_path}/archivos_vacunas/tercera_dosis.csv", index=False)
+
+#### CUARTA DOSIS ####
+cuarta_dosis_tier_one = cuarta_dosis.loc[cuarta_dosis["edad"] == "<18"]
+cuarta_dosis_tier_two = cuarta_dosis.loc[cuarta_dosis["edad"] == "18-49"]
+cuarta_dosis_tier_three = cuarta_dosis.loc[cuarta_dosis["edad"] == "50-69"]
+cuarta_dosis_tier_four = cuarta_dosis.loc[cuarta_dosis["edad"] == ">=70"]
+
+cuarta_dosis_tier_one["cantidad"] = cuarta_dosis_tier_one["cuarta_dosis"].cumsum()
+cuarta_dosis_tier_two["cantidad"] = cuarta_dosis_tier_two["cuarta_dosis"].cumsum()
+cuarta_dosis_tier_three["cantidad"] = cuarta_dosis_tier_three["cuarta_dosis"].cumsum()
+cuarta_dosis_tier_four["cantidad"] = cuarta_dosis_tier_four["cuarta_dosis"].cumsum()
+
+cuarta_dosis_tier_one["cobertura_procentual"] = round(cuarta_dosis_tier_one["cantidad"] / total_tier_one * 100, 2)
+cuarta_dosis_tier_two["cobertura_procentual"] = round(cuarta_dosis_tier_two["cantidad"] / total_tier_two * 100, 2)
+cuarta_dosis_tier_three["cobertura_procentual"] = round(cuarta_dosis_tier_three["cantidad"] / total_tier_three * 100, 2)
+cuarta_dosis_tier_four["cobertura_procentual"] = round(cuarta_dosis_tier_four["cantidad"] / total_tier_four * 100, 2)
+
+cuarta_final = pd.concat([cuarta_dosis_tier_one, cuarta_dosis_tier_two, cuarta_dosis_tier_three, cuarta_dosis_tier_four])
+
+cuarta_final.to_csv(f"{dir_path}/archivos_vacunas/cuarta_dosis.csv", index=False)
